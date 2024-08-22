@@ -1,6 +1,0 @@
-[submodule "devs-backend"]
-  path = devs-backend
-  url = git@github.com:DEVS-Repository-PFC/devs-backend.git
-[submodule "devs-react-app"]
-  path = devs-react-app
-  url = git@github.com:DEVS-Repository-PFC/devs-react-app.git

@@ -1,0 +1,43 @@
+services:
+  a01-db:
+    container_name: a01-devs-db
+    image: postgres:16-alpine3.18
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${A01_DB_PASSWORD}
+      - POSTGRES_USER=${A01_DB_USER}
+      - POSTGRES_DB=${A01_DB_NAME}
+    ports:
+      - 5433:5432
+  a01-backend:
+    container_name: a01-devs-backend
+    build:
+      context: ./devs-backend
+      dockerfile: Dockerfile
+    image: a01-devs-backend
+    restart: always
+    ports:
+      - 8091:8091
+    depends_on:
+      - a01-db
+    environment:
+      - DB_HOST=${A01_DB_HOST}
+      - DB_PORT=${A01_DB_PORT}
+      - DB_NAME=${A01_DB_NAME}
+      - DB_PASSWORD=${A01_DB_PASSWORD}
+      - JWT_SECRET=${A01_JWT_SECRET}
+      - SERVER_PORT=${A01_SERVER_PORT}
+      - SERVER_PATH=${A01_SERVER_PATH}
+  a01-frontend:
+    container_name: a01-devs-frontend
+    build:
+      context: ./devs-react-app
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_BASE_PATH=${A01_REACT_APP_BASE_PATH}
+    image: a01-devs-frontend
+    restart: always
+    ports:
+      - 3001:80
+    depends_on:
+      - a01-backend
