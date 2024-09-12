@@ -1,5 +1,4 @@
-#
-Devs tool
+# Devs tool
 
 ### Dev Prerequisites
 
