@@ -1,6 +1,8 @@
 # Devs tool
 
-### Dev Prerequisites
+Herramienta desarrollada en la UTN FRSF por Fausto David (@FauDavid), Diego Acosta (@diegoAcosta97) y Carolina Travaglini (@CaroTravaglini).
+
+## Dev environment
 
 Docker is required
 
