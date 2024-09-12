@@ -1,6 +1,8 @@
-### Prerequisites
+# Devs tool
 
-Docker Desktop should be running on Windows
+### Dev Prerequisites
+
+Docker is required
 
 ### Update repos
 
@@ -8,15 +10,6 @@ A step by step guide that will tell you how to get the development environment u
 
 ```
 git pull
-git submodule update --init --recursive
-cd devs-react-app
-git checkout develop
-git pull
-cd ..
-cd devs-backend
-git checkout develop
-git pull
-cd ..
 ```
 
 ### Setting Up Environment Variables
