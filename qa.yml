@@ -9,6 +9,7 @@ services:
       - POSTGRES_DB=${A01_DB_NAME}
     ports:
       - 5433:5432
+
   a01-backend:
     container_name: a01-devs-backend
     build:
@@ -28,6 +29,7 @@ services:
       - JWT_SECRET=${A01_JWT_SECRET}
       - SERVER_PORT=${A01_SERVER_PORT}
       - SERVER_PATH=${A01_SERVER_PATH}
+
   a01-frontend:
     container_name: a01-devs-frontend
     build:
@@ -41,3 +43,17 @@ services:
       - 3001:80
     depends_on:
       - a01-backend
+
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ./nginx-local/conf.d:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    depends_on:
+      - a01-backend
+      - a01-frontend
+
+networks:
+  default:
+    name: devs-a01-network
